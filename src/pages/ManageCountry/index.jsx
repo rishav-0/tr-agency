@@ -40,10 +40,12 @@ const ManageCountry = () => {
     setCountryCode('')
     fetchData();
   };
+  
   const fetchData = async () => {
    const res = await fetchCountryData();
    setFormData(res)
   };
+
   useEffect(()=>{
     fetchData()
   },[])
