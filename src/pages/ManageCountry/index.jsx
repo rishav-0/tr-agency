@@ -1,6 +1,17 @@
 import { Button, Input } from '@material-tailwind/react';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '../../Components/Card';
+import {
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  deleteDoc,
+  updateDoc,
+} from "firebase/firestore";
+import {db} from '../../firebase'
+import { fetchCountryData } from '../../service/countryService';
+
 
 const ManageCountry = () => {
 
@@ -8,20 +19,35 @@ const ManageCountry = () => {
   const [countryCode,setCountryCode] = useState('')
   const [image,setImage] = useState('')
   const [formData,setFormData] = useState([])
+  const [editId,setEditId] = useState(null)
 
-  const handleSubmit = (e)=>{
-    e.preventDefault()
-   setFormData((prev) => [
-     ...prev,
-     {
-       country: country,
-       countryCode:countryCode,
-       image: image,
-     },
-   ]);
-   setCountry('')
-   setImage('')
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const dataToSend = {
+      country: country,
+      countryCode: countryCode,
+      image: image,
+    };
+    
+    if (editId) {
+      await updateDoc(doc(db, "country", editId), dataToSend);
+      setEditId(null);
+    } else {
+      await addDoc(collection(db, "country"), dataToSend);
+    }
+    setCountry("");
+    setImage("");
+    setCountryCode('')
+    fetchData();
+  };
+  const fetchData = async () => {
+   const res = await fetchCountryData();
+   setFormData(res)
+  };
+  useEffect(()=>{
+    fetchData()
+  },[])
+
   
 
   return (
@@ -39,7 +65,7 @@ const ManageCountry = () => {
           variant="static"
           label="Country code (ISO alpha-3 code)"
           placeholder="ISO alpha-3 code"
-          value={country}
+          value={countryCode}
           onChange={(e) => setCountryCode(e.target.value)}
         />
         <Input

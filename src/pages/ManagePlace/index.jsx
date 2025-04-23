@@ -1,6 +1,7 @@
 import { Button, Input, Option, Select } from "@material-tailwind/react";
 import React, { useState } from "react";
 import Card from "../../Components/Card";
+import PlaceTable from "../../Components/PlaceTable";
 
 
 const ManagePlace = () => {
@@ -93,16 +94,7 @@ const ManagePlace = () => {
       <hr />
       <p className="text-xl font-semibold my-4">Place List</p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 my-4">
-        {formData.map((item) => (
-          <Card
-            key={item.id}
-            country={item.countryName}
-            name={item.placeName}
-            extraInfo={`State: ${item.stateName}`}
-          />
-        ))}
-      </div>
+      <PlaceTable data={formData} />
     </div>
   );
 };

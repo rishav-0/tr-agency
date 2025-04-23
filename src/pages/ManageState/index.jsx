@@ -1,6 +1,7 @@
 import { Button, Input, Option, Select } from "@material-tailwind/react";
 import React, { useState } from "react";
 import Card from "../../Components/Card";
+import Table from "../../Components/Table";
 
 const ManageState = () => {
   const countrlist = ["India", "UAE", "USA", "UK"];
@@ -65,11 +66,7 @@ const ManageState = () => {
       <hr />
       <p className="text-xl font-semibold my-4">State list</p>
 
-      <div className="grid grid-cols-4 gap-8 my-4">
-        {formData?.map((i) => (
-          <Card key={i.state} country={i.country} name={i?.state} />
-        ))}
-      </div>
+      <Table data={formData} />
     </div>
   );
 };

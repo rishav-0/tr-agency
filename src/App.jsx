@@ -9,12 +9,13 @@ import ManageCountry from './pages/ManageCountry'
 import ManageState from './pages/ManageState'
 import ManagePlace from './pages/ManagePlace'
 import ManageDestination from './pages/ManageDestination'
-
+const apikey = import.meta.env.VITE_APIKEY;
 
 function App() {
 
   return (
     <>
+      <h1>{apikey}</h1>
       <div className="flex h-screen overflow-hidden w-screen">
         <MultiLevelSidebar />
         <div className="overflow-y-auto w-full p-8">
