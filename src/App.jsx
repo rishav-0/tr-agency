@@ -15,7 +15,6 @@ function App() {
 
   return (
     <>
-      <h1>{apikey}</h1>
       <div className="flex h-screen overflow-hidden w-screen">
         <MultiLevelSidebar />
         <div className="overflow-y-auto w-full p-8">

@@ -17,13 +17,17 @@ const ManagePlace = () => {
   const [state, setState] = useState("");
   const [editId, setEditId] = useState(null);
 
+  // 🟢 Submit handler
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const dataToSend = {
-      country: country,
-      state: state,
       place: placeName,
-      placeId: placeId,
+      placeId,
+      state: state?.state,
+      stateCode: state?.stateCode,
+      country: state?.country,
+      countryCode: state?.countryCode,
     };
 
     if (editId) {
@@ -41,6 +45,20 @@ const ManagePlace = () => {
     fetchPlace();
   };
 
+  // 🟢 Edit handler
+  const handleEdit = (data, id) => {
+    setEditId(id);
+    setPlace(data.place);
+    setPlaceId(data.placeId);
+    setCountry(data.country);
+
+    const matchedState = stateList.find(
+      (item) => item.state === data.state && item.country === data.country
+    );
+    setState(matchedState || "");
+  };
+
+  // 🟢 Data Fetchers
   const fetchCountry = async () => {
     const res = await fetchCountryData();
     setCountryList(res);
@@ -76,7 +94,6 @@ const ManagePlace = () => {
           value={placeName}
           onChange={(e) => setPlace(e.target.value)}
         />
-
         <Input
           variant="static"
           label="Zip Code"
@@ -84,14 +101,13 @@ const ManagePlace = () => {
           value={placeId}
           onChange={(e) => setPlaceId(e.target.value)}
         />
-
         <Select
           variant="static"
           label="Select Country"
           value={country}
           onChange={(val) => {
             setCountry(val);
-            setState(""); // Reset state on country change
+            setState("");
           }}
         >
           {countryList.map((i) => (
@@ -104,8 +120,13 @@ const ManagePlace = () => {
         <Select
           variant="static"
           label="Select State"
-          value={state}
-          onChange={(val) => setState(val)}
+          value={state?.state || ""}
+          onChange={(val) => {
+            const selected = stateList.find(
+              (item) => item.state === val && item.country === country
+            );
+            setState(selected);
+          }}
           disabled={!country}
         >
           {stateList
@@ -123,7 +144,7 @@ const ManagePlace = () => {
             type="submit"
             className="min-w-[142px] w-full text-white"
           >
-            {editId ? "Update Place" : "Create Place"}
+            {editId ? "Save Edits" : "Create Place"}
           </Button>
         </div>
       </form>
@@ -133,7 +154,12 @@ const ManagePlace = () => {
 
       <div className="grid grid-cols-4 gap-8 my-4">
         {formData?.map((i) => (
-          <Card key={i.placeId} flag={i?.image} name={i?.place} />
+          <Card
+            key={i.id}
+            flag={i?.image}
+            name={i?.place}
+            onEdit={() => handleEdit(i, i.id)}
+          />
         ))}
       </div>
     </div>
