@@ -7,11 +7,13 @@ import {
   ListItemPrefix,
 } from "@material-tailwind/react";
 import {
-
-  Cog6ToothIcon,
-
+  GlobeAltIcon,
+  MapIcon,
+  MapPinIcon,
+  PaperAirplaneIcon,
   PowerIcon,
-} from "@heroicons/react/24/solid";
+} from "@heroicons/react/24/outline";
+
 
 import { Link } from "react-router";
 
@@ -30,11 +32,10 @@ export function MultiLevelSidebar() {
         </Typography>
       </div>
       <List>
-        
         <Link to="/managecountry">
           <ListItem>
             <ListItemPrefix>
-              <Cog6ToothIcon className="h-5 w-5" />
+              <GlobeAltIcon className="h-5 w-5" />
             </ListItemPrefix>
             Manage Country
           </ListItem>
@@ -42,7 +43,7 @@ export function MultiLevelSidebar() {
         <Link to="/managestate">
           <ListItem>
             <ListItemPrefix>
-              <Cog6ToothIcon className="h-5 w-5" />
+              <MapIcon className="h-5 w-5" />
             </ListItemPrefix>
             Manage State
           </ListItem>
@@ -50,7 +51,7 @@ export function MultiLevelSidebar() {
         <Link to="/manageplace">
           <ListItem>
             <ListItemPrefix>
-              <Cog6ToothIcon className="h-5 w-5" />
+              <MapPinIcon className="h-5 w-5" />
             </ListItemPrefix>
             Manage Place
           </ListItem>
@@ -58,7 +59,7 @@ export function MultiLevelSidebar() {
         <Link to="/managedestination">
           <ListItem>
             <ListItemPrefix>
-              <Cog6ToothIcon className="h-5 w-5" />
+              <PaperAirplaneIcon className="h-5 w-5" />
             </ListItemPrefix>
             Manage Destination
           </ListItem>
