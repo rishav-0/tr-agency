@@ -1,3 +1,4 @@
+import { InformationCircleIcon } from "@heroicons/react/16/solid";
 import React from "react";
 
 const Tooltipx = ({  content }) => {

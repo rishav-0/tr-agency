@@ -300,7 +300,7 @@ const ManageDestination = () => {
         size={600} // Explicit size might be better
         className="p-4 overflow-y-auto !max-w-[600px]" // Use !max-w for override if needed
       >
-        <div className="flex justify-between items-center mb-6 sticky top-0 bg-white z-10 pb-4 border-b">
+        <div className="flex justify-between items-center mb-6 sticky -top-4 bg-white z-10 pb-4 border-b">
           <Typography variant="h6">
             {editId !== null ? "Edit" : "Add"} Destination
           </Typography>
@@ -444,10 +444,10 @@ const ManageDestination = () => {
           {/* --- Creatable Selects --- */}
           {/* Tags */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="text-sm font-medium text-gray-700 mb-1 flex items-center gap-2">
               Tags
+              <Tooltipx content="hello" />
             </label>
-            <Tooltipx content='hello' />
             <CreatableSelect
               isMulti
               onChange={handleTagsChange}
@@ -459,8 +459,9 @@ const ManageDestination = () => {
 
           {/* Highlights */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Highlights
+            <label className="text-sm font-medium text-gray-700 mb-1 flex items-center gap-2">
+              Highlisghts
+              <Tooltipx content="hello" />
             </label>
             <CreatableSelect
               isMulti
@@ -474,8 +475,9 @@ const ManageDestination = () => {
           {/* Languages Spoken */}
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <label className="block text-sm font-medium text-gray-700">
-                Languages Spoken
+              <label className="text-sm font-medium text-gray-700 mb-1 flex items-center gap-2">
+                Language Spoken
+                <Tooltipx content="hello" />
               </label>
               <Tooltip content="e.g. English, Hindi, Spanish" placement="right">
                 <span className="cursor-pointer">
@@ -495,10 +497,10 @@ const ManageDestination = () => {
           {/* Activities */}
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="text-sm font-medium text-gray-700 mb-1 flex items-center gap-2">
                 Activities
+                <Tooltipx content="hello" />
               </label>
-             
             </div>
             <CreatableSelect
               isMulti
