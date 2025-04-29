@@ -9,6 +9,7 @@ import ManageCountry from './pages/ManageCountry'
 import ManageState from './pages/ManageState'
 import ManagePlace from './pages/ManagePlace'
 import ManageDestination from './pages/ManageDestination'
+import ManageTag from './pages/ManageTag'
 const apikey = import.meta.env.VITE_APIKEY;
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/managestate" element={<ManageState />} />
             <Route path="/manageplace" element={<ManagePlace />} />
             <Route path="/managedestination" element={<ManageDestination />} />
+            <Route path="/managetag" element={<ManageTag />} />
           </Routes>
         </div>
       </div>

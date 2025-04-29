@@ -12,6 +12,8 @@ import {
   MapPinIcon,
   PaperAirplaneIcon,
   PowerIcon,
+  HashtagIcon,
+  TagIcon,
 } from "@heroicons/react/24/outline";
 
 
@@ -25,8 +27,8 @@ export function MultiLevelSidebar() {
   };
 
   return (
-    <Card className="h-[100vh] w-[250px] max-w-[20rem] p-4 ">
-      <div className="mb-2 p-4">
+    <Card className="h-[100vh] w-[250px] max-w-[20rem] p-4">
+      <div className="mb-2 p-4 border-b">
         <Typography variant="h5" color="blue-gray">
           Travel Agency
         </Typography>
@@ -62,6 +64,14 @@ export function MultiLevelSidebar() {
               <PaperAirplaneIcon className="h-5 w-5" />
             </ListItemPrefix>
             Manage Destination
+          </ListItem>
+        </Link>
+        <Link to="/managetag">
+          <ListItem>
+            <ListItemPrefix>
+              <HashtagIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            Manage Tag
           </ListItem>
         </Link>
         <ListItem>
