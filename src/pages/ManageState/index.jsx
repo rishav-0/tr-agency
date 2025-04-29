@@ -114,7 +114,7 @@ const ManageState = () => {
           <Card
             key={i.id}
             flag={i?.image}
-            name={`${i?.state} (${i?.stateCode})`}
+            name={`${i?.state} `}
             onEdit={() => handleEdit(i)}
           />
         ))}
